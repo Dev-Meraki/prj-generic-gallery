@@ -1,0 +1,12 @@
+<ng-container *ngIf="storage.images$ | async as myImages">
+
+    <section class="d-flex justify-content-end">
+        <app-user-menu></app-user-menu>
+    </section>
+    <ng-container *ngIf="$any(myImages).items.length>0">
+        <p>Received Image list!</p>
+    </ng-container>
+    
+</ng-container>
+<!-- <p>Auth! <code *ngIf="auth.loggedIn$ | async as user">I am in {{$any(user).uid}}</code></p> -->
+

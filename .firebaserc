@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "golu-life": {
+      "hosting": {
+        "state-mgmnt": [
+          "golu-life"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "golu-life"
+  }
+}

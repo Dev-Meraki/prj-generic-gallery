@@ -1,0 +1,53 @@
+{
+  "name": "golu-life",
+  "version": "1.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "deploy": "ng build --configuration production && firebase deploy -P default"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "~12.2.10",
+    "@angular/cdk": "^12.2.10",
+    "@angular/common": "~12.2.10",
+    "@angular/compiler": "~12.2.10",
+    "@angular/core": "~12.2.10",
+    "@angular/fire": "^7.1.0",
+    "@angular/forms": "~12.2.10",
+    "@angular/material": "^12.2.10",
+    "@angular/platform-browser": "~12.2.10",
+    "@angular/platform-browser-dynamic": "~12.2.10",
+    "@angular/router": "~12.2.10",
+    "bootstrap": "^5.1.3",
+    "firebase": "^9.1.3",
+    "rxfire": "^6.0.2",
+    "rxjs": "^6.6.7",
+    "tslib": "^2.0.0",
+    "zone.js": "~0.11.4"
+  },
+  "devDependencies": {
+    "@angular-devkit/architect": "0.1202.10",
+    "@angular-devkit/build-angular": "~12.2.10",
+    "@angular/cli": "^12.2.10",
+    "@angular/compiler-cli": "~12.2.10",
+    "@types/jasmine": "~3.6.0",
+    "@types/node": "^12.11.1",
+    "codelyzer": "^6.0.0",
+    "jasmine-core": "~3.6.0",
+    "jasmine-spec-reporter": "~5.0.0",
+    "karma": "~6.3.1",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "~2.0.3",
+    "karma-jasmine": "~4.0.0",
+    "karma-jasmine-html-reporter": "^1.5.0",
+    "protractor": "~7.0.0",
+    "ts-node": "~8.3.0",
+    "tslint": "~6.1.0",
+    "typescript": "~4.3.5"
+  }
+}
