@@ -7,18 +7,19 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MaterialModule } from './material/material.module';
 import { SnackBarComponent } from './snack-bar/snack-bar.component';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideAuth, getAuth } from '@angular/fire/auth';
 // import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 // import { provideFunctions,getFunctions } from '@angular/fire/functions';
-import { provideStorage,getStorage } from '@angular/fire/storage';
+import { provideStorage, getStorage } from '@angular/fire/storage';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { GalleryComponent } from './gallery/gallery.component';
 import { UserMenuComponent } from './toolbar/user-menu/user-menu.component';
 import { FallbackComponent } from './fallback/fallback.component';
-
+import { NgxMasonryModule } from 'ngx-masonry';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { FallbackComponent } from './fallback/fallback.component';
   ],
   imports: [
     BrowserModule,
+    InfiniteScrollModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     // HttpClientModule,
@@ -43,6 +45,7 @@ import { FallbackComponent } from './fallback/fallback.component';
     // provideFirestore(() => getFirestore()),
     // provideFunctions(() => getFunctions()),
     provideStorage(() => getStorage()),
+    NgxMasonryModule,
   ],
   entryComponents: [SnackBarComponent],
   providers: [
