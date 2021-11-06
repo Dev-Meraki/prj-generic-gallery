@@ -16,11 +16,11 @@ $my-custom-typography: mat.define-typography-config(
 
 html,
 body {
-  height: 100%;  
+  height: 100%;
   background-color: white;
 }
 
-.body-background{
+.body-background {
   background-image: url(/assets/landing-page/banner/1.jpg);
   background-position: center center;
   background-repeat: no-repeat;
@@ -53,6 +53,6 @@ a:hover {
   .mat-headline,
   .mat-typography h1 {
     font-size: 1.65em;
-    line-height: 1em;
+    line-height: 1.35em;
   }
 }

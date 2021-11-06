@@ -1,12 +1,28 @@
 <ng-container *ngIf="storage.images$ | async as myImages">
-
-    <section class="d-flex justify-content-end">
-        <app-user-menu></app-user-menu>
-    </section>
-    <ng-container *ngIf="$any(myImages).items.length>0">
-        <p>Received Image list!</p>
-    </ng-container>
-    
+  <section class="d-flex justify-content-end">
+    <app-user-menu></app-user-menu>
+  </section>
+  <ng-container *ngIf="$any(myImages).items.length > 0">
+    <div class="container masonry-center w-100">
+      <div class="row m-0 p-0 justify-content-center">
+        <ngx-masonry [options]="{ gutter: 20, fitWidth: true }">
+          <div
+            ngxMasonryItem
+            class="masonry-item"
+            *ngFor="let item of $any(myImages).items"
+          >
+            <img [src]="item" width="100%" />
+          </div>
+        </ngx-masonry>
+      </div>
+    </div>
+  </ng-container>
 </ng-container>
 <!-- <p>Auth! <code *ngIf="auth.loggedIn$ | async as user">I am in {{$any(user).uid}}</code></p> -->
-
+<!-- Scroll component -->
+<div
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="300"
+  (scrolled)="onScroll()"
+></div>

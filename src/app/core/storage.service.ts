@@ -19,7 +19,7 @@ export interface gallery {
   providedIn: 'root',
 })
 export class StorageService {
-  readonly MAX_RESULTS = 1;
+  readonly MAX_RESULTS = 7;
   readonly storage = getStorage();
 
   private images = new BehaviorSubject<gallery>({

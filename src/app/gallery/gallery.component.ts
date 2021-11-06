@@ -25,7 +25,12 @@ export class GalleryComponent implements OnInit, OnDestroy {
         }
       });
   }
-  
+  onScroll() {
+    console.log('scrolled');
+    if (this.storage.getGalleryState().nextPageToken != undefined) {
+      this.storage.getNextSetOfObjects('/Golu');
+    }
+  }
   ngOnDestroy(): void {
     if (this.userDisposable) {
       this.userDisposable.unsubscribe();
