@@ -4,7 +4,7 @@
 .env
 .idea
 .vscode/
-
+.cache/
 # Build files
 build/
 dist/
