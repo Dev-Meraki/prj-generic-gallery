@@ -40,7 +40,6 @@ export class AuthService {
     const user = await signInWithPopup(this.auth, new GoogleAuthProvider());
     if (user.user.uid && user.user.uid != null) {
       this.router.navigate(['/gallery']);
-      //this.setUnauthorizedState(false);
     }
   }
 

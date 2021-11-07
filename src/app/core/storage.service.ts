@@ -60,7 +60,6 @@ export class StorageService {
 
       //DEBUG
       console.log(this.getGalleryState());
-      // this.getNextSetOfObjects('/Golu');
     } catch (error: any) {
       this.handleStorageErrors(error);
     }
