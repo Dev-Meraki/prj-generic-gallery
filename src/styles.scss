@@ -2,11 +2,6 @@
 // @import url(https://fonts.googleapis.com/css?family=Roboto:500);
 @use "@angular/material" as mat;
 @import url("https://fonts.googleapis.com/css2?family=Ephesis&display=swap");
-// $font-size,
-//   $line-height: $font-size,
-//   $font-weight: 400,
-//   $font-family: null,
-//   $letter-spacing: normal
 
 $my-custom-typography: mat.define-typography-config(
   $font-family: "Ephesis",
@@ -17,7 +12,12 @@ $my-custom-typography: mat.define-typography-config(
 html,
 body {
   height: 100%;
-  background-color: white;
+  background-image: url(/assets/landing-page/banner/1.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #f4e7ec;
 }
 
 .body-background {
@@ -26,7 +26,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  background-color: #464646;
+  background-color: #f4e7ec;
 }
 body {
   margin: 0;
