@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ng build --configuration production && firebase deploy -P default"
+    "deploy": "ng build --configuration production && firebase deploy -P default",
+    "hosting-emulator": "firebase use --project golu-life && firebase emulators:start --only hosting"
   },
   "private": true,
   "dependencies": {

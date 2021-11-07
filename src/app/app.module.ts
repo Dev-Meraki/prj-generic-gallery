@@ -10,8 +10,6 @@ import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
-// import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-// import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { provideStorage, getStorage } from '@angular/fire/storage';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { AngularFireModule } from '@angular/fire/compat';
@@ -36,14 +34,10 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     InfiniteScrollModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    // HttpClientModule,
     MaterialModule,
-    // SharedUIComponentsModule,
     AngularFireModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
-    // provideFirestore(() => getFirestore()),
-    // provideFunctions(() => getFunctions()),
     provideStorage(() => getStorage()),
     NgxMasonryModule,
   ],

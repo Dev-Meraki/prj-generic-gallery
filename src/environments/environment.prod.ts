@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
+  useEmulators: true,
   firebase: {
     projectId: 'golu-life',
     appId: '1:179048005477:web:b118660b6f1a2eb94b6b8c',
