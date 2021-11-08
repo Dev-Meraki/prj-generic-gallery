@@ -10,6 +10,7 @@ import {
 } from '@angular/fire/storage';
 import { BehaviorSubject } from 'rxjs';
 import { AuthService } from './auth.service';
+import { LoaderService } from './loader.service';
 export interface gallery {
   items: Array<string>;
   nextPageToken: string | undefined;
@@ -30,7 +31,8 @@ export class StorageService {
 
   constructor(
     private _fireStorage: Storage,
-    @Optional() public auth: AuthService
+    @Optional() public auth: AuthService,
+    private loader: LoaderService
   ) {}
 
   public async getImages(album: string = '/Golu') {
@@ -57,7 +59,6 @@ export class StorageService {
         ...currentGalleryState,
         items: [...currentGalleryState.items, ...URLS],
       });
-
       //DEBUG
       console.log(this.getGalleryState());
     } catch (error: any) {
@@ -68,6 +69,7 @@ export class StorageService {
   private async getObjectList(album: string, config: {}) {
     // Create a reference under which you want to list
     try {
+      this.loader.setLoadingState(true);
       const listRef: StorageReference = ref(this.storage, album);
       const objects: ListResult = await list(listRef, config);
 
@@ -77,7 +79,8 @@ export class StorageService {
           ...currentGalleryState,
           nextPageToken: objects.nextPageToken,
         });
-        this.generateDownloadURL(objects.items);
+        await this.generateDownloadURL(objects.items);
+        this.loader.setLoadingState(false);
       }
     } catch (error) {
       this.handleStorageErrors(error);
@@ -100,6 +103,7 @@ export class StorageService {
   }
 
   handleStorageErrors(error: any) {
+    this.loader.setLoadingState(false);
     // A full list of error codes is available at
     // https://firebase.google.com/docs/storage/web/handle-errors
     switch (error.code) {

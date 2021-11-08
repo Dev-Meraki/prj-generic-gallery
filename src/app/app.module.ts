@@ -18,6 +18,7 @@ import { UserMenuComponent } from './toolbar/user-menu/user-menu.component';
 import { FallbackComponent } from './fallback/fallback.component';
 import { NgxMasonryModule } from 'ngx-masonry';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     GalleryComponent,
     UserMenuComponent,
     FallbackComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,

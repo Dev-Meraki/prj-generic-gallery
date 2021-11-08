@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit, Optional } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { AuthService } from '../core/auth.service';
+import { LoaderService } from '../core/loader.service';
 import { StorageService } from '../core/storage.service';
 
 @Component({

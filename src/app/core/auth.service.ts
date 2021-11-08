@@ -11,6 +11,7 @@ import { traceUntilFirst } from '@angular/fire/performance';
 import { BehaviorSubject, EMPTY, Observable } from 'rxjs';
 import { map, startWith, take, takeLast, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { LoaderService } from './loader.service';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +24,11 @@ export class AuthService {
   private unauthorized = new BehaviorSubject<boolean>(false);
   public unauthorized$ = this.unauthorized.asObservable();
 
-  constructor(@Optional() private auth: Auth, private router: Router) {
+  constructor(
+    @Optional() private auth: Auth,
+    private router: Router,
+    private loader: LoaderService
+  ) {
     if (auth) {
       // this.user = authState(this.auth);
       authState(this.auth)
@@ -37,18 +42,24 @@ export class AuthService {
     }
   }
   public async login() {
-    const user = await signInWithPopup(this.auth, new GoogleAuthProvider());
-    if (user.user.uid && user.user.uid != null) {
-      this.router.navigate(['/gallery']);
+    this.loader.setLoadingState(true);
+    try {
+      const user = await signInWithPopup(this.auth, new GoogleAuthProvider());
+      if (user.user.uid && user.user.uid != null) {
+        this.router.navigate(['/gallery']);
+        this.loader.setLoadingState(false);
+      }
+    } catch (error) {
+      this.handleAuthErrors(error);
     }
   }
 
   public async logout(storageUnauthorized: boolean = false) {
     await signOut(this.auth);
-    if(storageUnauthorized){
+    if (storageUnauthorized) {
       this.setUnauthorizedState(true);
-      this.router.navigate(['/try-again'])
-    }else{
+      this.router.navigate(['/try-again']);
+    } else {
       this.setUnauthorizedState(false);
       this.router.navigate(['/']);
     }
@@ -59,7 +70,29 @@ export class AuthService {
     this.loggedIn.next(null);
   }
 
-  public setUnauthorizedState(isUnauthorized:boolean){
+  public setUnauthorizedState(isUnauthorized: boolean) {
     this.unauthorized.next(isUnauthorized);
+  }
+
+  handleAuthErrors(error: any) {
+    this.loader.setLoadingState(false);
+    console.log(error.code);
+    // A full list of error codes is available at
+    // https://firebase.google.com/docs/storage/web/handle-errors
+    switch (error.code) {
+      case 'auth/cancelled-popup-request':
+        // File doesn't exist
+        console.log(error.code);
+        break;
+      case 'storage/unauthorized':
+        // User doesn't have permission to access the object
+        console.log('storage/unauthorized');
+        // This account is not permitted from BE Rules
+        break;
+      case 'storage/unknown':
+        // Unknown error occurred, inspect the server response
+        console.log('storage/unknown');
+        break;
+    }
   }
 }
