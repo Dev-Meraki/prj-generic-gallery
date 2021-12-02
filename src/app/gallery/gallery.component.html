@@ -12,8 +12,19 @@
             *ngFor="let item of $any(myImages).items"
           >
             <!-- TODO: Optimise for all image formats -->
-            <img *ngIf="item.indexOf('MOV') < 0" [src]="item" />
-            <div class="video-container" *ngIf="item.indexOf('MOV') > -1">
+            <img
+              *ngIf="
+                item.indexOf('jpeg') > -1 ||
+                item.indexOf('jpg') > -1 ||
+                item.indexOf('png') > -1 ||
+                item.indexOf('gif') > -1
+              "
+              [src]="item"
+            />
+            <div
+              class="video-container"
+              *ngIf="item.indexOf('MOV') > -1 || item.indexOf('.mp4') > -1"
+            >
               <video class="mt-5" autoplay controls loop>
                 <source [src]="item" type="video/mp4" />
                 Your browser does not support HTML5 video.
