@@ -8,7 +8,15 @@
   width: 100%;
   min-height: 340px;
 }
-.masonry-center{
-    text-align: center;
-    margin: 0 auto;
+.masonry-item video {
+  width: 100%;
+  max-height: 100%;
+}
+.masonry-item .video-container {
+  width: 100%;
+  min-height: 700px;
+}
+.masonry-center {
+  text-align: center;
+  margin: 0 auto;
 }
