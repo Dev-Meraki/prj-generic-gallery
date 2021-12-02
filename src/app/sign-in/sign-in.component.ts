@@ -1,5 +1,4 @@
-import { StorageService } from '../core/storage.service';
-import { Component, OnInit, Optional } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../core/auth.service';
 @Component({
   selector: 'app-sign-in',
@@ -8,7 +7,7 @@ import { AuthService } from '../core/auth.service';
 })
 export class SignInComponent implements OnInit {
   constructor(
-    @Optional() public auth: AuthService
+    public auth: AuthService
   ) {}
 
   ngOnInit(): void {}

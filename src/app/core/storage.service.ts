@@ -80,8 +80,8 @@ export class StorageService {
           nextPageToken: objects.nextPageToken,
         });
         await this.generateDownloadURL(objects.items);
-        this.loader.setLoadingState(false);
       }
+      this.loader.setLoadingState(false);
     } catch (error) {
       this.handleStorageErrors(error);
     }
