@@ -11,8 +11,9 @@
             class="masonry-item"
             *ngFor="let item of $any(myImages).items"
           >
-            <img *ngIf="item.indexOf('jpg') > -1" [src]="item" />
-            <div class="video-container" *ngIf="item.indexOf('jpg') < 0">
+            <!-- TODO: Optimise for all image formats -->
+            <img *ngIf="item.indexOf('MOV') < 0" [src]="item" />
+            <div class="video-container" *ngIf="item.indexOf('MOV') > -1">
               <video class="mt-5" autoplay controls loop>
                 <source [src]="item" type="video/mp4" />
                 Your browser does not support HTML5 video.
