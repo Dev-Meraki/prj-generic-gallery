@@ -15,7 +15,7 @@
             <img
               *ngIf="
                 item.indexOf('jpeg') > -1 ||
-                item.indexOf('jpg') > -1 ||
+                item.indexOf('jpg') > -1 ||  item.indexOf('JPG') > -1 ||
                 item.indexOf('png') > -1 ||
                 item.indexOf('gif') > -1
               "
@@ -25,7 +25,7 @@
               class="video-container"
               *ngIf="item.indexOf('MOV') > -1 || item.indexOf('.mp4') > -1"
             >
-              <video class="mt-5" autoplay controls loop>
+              <video class="mt-5" muted autoplay controls loop>
                 <source [src]="item" type="video/mp4" />
                 Your browser does not support HTML5 video.
               </video>
