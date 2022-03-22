@@ -3,8 +3,8 @@
     <app-user-menu></app-user-menu>
   </section>
   <ng-container *ngIf="$any(myImages).items.length > 0">
-    <div class="container masonry-center w-100">
-      <div class="row m-0 p-0 justify-content-center">
+    <div class="container-fluid  masonry-center w-100">
+      <div class="row w-100 m-0 p-0 justify-content-center">
         <ngx-masonry [options]="{ gutter: 20, fitWidth: true }">
           <div
             ngxMasonryItem
@@ -25,7 +25,7 @@
               class="video-container"
               *ngIf="item.indexOf('MOV') > -1 || item.indexOf('.mp4') > -1"
             >
-              <video class="mt-5" muted autoplay controls loop>
+              <video class="mt-5" muted controls loop>
                 <source [src]="item" type="video/mp4" />
                 Your browser does not support HTML5 video.
               </video>
