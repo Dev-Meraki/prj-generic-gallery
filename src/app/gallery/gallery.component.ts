@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { AuthService } from '../core/auth.service';
 import { StorageService } from '../core/storage.service';
+import { DIRECTORIES } from '../config/constants';
 
 @Component({
   selector: 'app-gallery',
@@ -30,7 +31,7 @@ export class GalleryComponent implements OnInit, OnDestroy {
   onScroll() {
     console.log('scrolled');
     if (this.storage.getGalleryState().nextPageToken != undefined) {
-      this.storage.getNextSetOfObjects('/Golu');
+      this.storage.getNextSetOfObjects(DIRECTORIES.GOLU);
     }
   }
   ngOnDestroy(): void {

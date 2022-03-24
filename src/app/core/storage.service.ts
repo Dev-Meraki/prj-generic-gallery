@@ -11,19 +11,20 @@ import {
 import { BehaviorSubject } from 'rxjs';
 import { AuthService } from './auth.service';
 import { LoaderService } from './loader.service';
-export interface gallery {
-  items: Array<string>;
-  nextPageToken: string | undefined;
-}
+import { GALLERY, DIRECTORIES } from '../config/constants'
 
 @Injectable({
   providedIn: 'root',
 })
 export class StorageService {
   readonly MAX_RESULTS = 7;
+  private INIT_GALLERY_STATE:GALLERY = {
+    items: [],
+    nextPageToken: undefined,
+  }
   readonly storage = getStorage();
 
-  private images = new BehaviorSubject<gallery>({
+  private images = new BehaviorSubject<GALLERY>({
     items: [],
     nextPageToken: undefined,
   });
@@ -35,7 +36,7 @@ export class StorageService {
     private loader: LoaderService
   ) {}
 
-  public async getImages(album: string = '/Golu') {
+  public async getImages(album: string = DIRECTORIES.GOLU) {
     // Fetch the first page of 100.
     await this.getObjectList(album, {
       maxResults: this.MAX_RESULTS,
@@ -103,10 +104,7 @@ export class StorageService {
   }
 
   resetGalleryState(){
-    this.images.next({
-      items: [],
-      nextPageToken: undefined,
-    })
+    this.images.next({...this.INIT_GALLERY_STATE})
   }
 
   handleStorageErrors(error: any) {
