@@ -12,12 +12,12 @@ $my-custom-typography: mat.define-typography-config(
 html,
 body {
   height: 100%;
-  background-image: url(/assets/landing-page/banner/1.jpg);
+  // background-image: url(/assets/landing-page/banner/1.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  background-color: #f4e7ec;
+  // background-color: #f4e7ec;
 }
 
 .body-background {
@@ -26,7 +26,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  background-color: #f4e7ec;
+  // background-color: #f4e7ec;
 }
 body {
   margin: 0;

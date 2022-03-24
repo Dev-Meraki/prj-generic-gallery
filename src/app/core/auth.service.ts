@@ -8,8 +8,8 @@ import {
   signInWithPopup,
 } from '@angular/fire/auth';
 import { traceUntilFirst } from '@angular/fire/performance';
-import { BehaviorSubject, EMPTY, Observable } from 'rxjs';
-import { map, startWith, take, takeLast, tap } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { LoaderService } from './loader.service';
 
@@ -41,6 +41,7 @@ export class AuthService {
         });
     }
   }
+
   public async login() {
     this.loader.setLoadingState(true);
     try {
@@ -65,6 +66,7 @@ export class AuthService {
     }
     this.setAuthState();
   }
+
   public setAuthState() {
     //Clear state
     this.loggedIn.next(null);

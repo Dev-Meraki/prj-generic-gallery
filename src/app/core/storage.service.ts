@@ -102,6 +102,13 @@ export class StorageService {
     return this.images.getValue();
   }
 
+  resetGalleryState(){
+    this.images.next({
+      items: [],
+      nextPageToken: undefined,
+    })
+  }
+
   handleStorageErrors(error: any) {
     this.loader.setLoadingState(false);
     // A full list of error codes is available at
