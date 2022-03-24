@@ -12,6 +12,7 @@ import { BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { LoaderService } from './loader.service';
+import { ROUTES } from '../config/constants';
 
 @Injectable({
   providedIn: 'root',
@@ -47,7 +48,7 @@ export class AuthService {
     try {
       const user = await signInWithPopup(this.auth, new GoogleAuthProvider());
       if (user.user.uid && user.user.uid != null) {
-        this.router.navigate(['/gallery']);
+        this.router.navigate([ROUTES.GALLERY]);
         this.loader.setLoadingState(false);
       }
     } catch (error) {
@@ -59,7 +60,7 @@ export class AuthService {
     await signOut(this.auth);
     if (storageUnauthorized) {
       this.setUnauthorizedState(true);
-      this.router.navigate(['/try-again']);
+      this.router.navigate([ROUTES.FALLBACK]);
     } else {
       this.setUnauthorizedState(false);
       this.router.navigate(['/']);
@@ -86,14 +87,8 @@ export class AuthService {
         // File doesn't exist
         console.log(error.code);
         break;
-      case 'storage/unauthorized':
-        // User doesn't have permission to access the object
-        console.log('storage/unauthorized');
-        // This account is not permitted from BE Rules
-        break;
-      case 'storage/unknown':
-        // Unknown error occurred, inspect the server response
-        console.log('storage/unknown');
+      case 'auth/popup-closed-by-user':
+        console.log(error.code);
         break;
     }
   }

@@ -22,3 +22,8 @@ export const ALLOWED_IMAGE_FORMAT = [
   'image/webp',
   'image/svg+xml'
 ];
+export const ROUTES ={
+  GALLERY: 'gallery',
+  FALLBACK: 'try-again',
+  LOGIN: 'login'
+}
