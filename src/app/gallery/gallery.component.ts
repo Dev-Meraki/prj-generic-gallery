@@ -12,7 +12,6 @@ import { DIRECTORIES } from '../config/constants';
 })
 export class GalleryComponent implements OnInit, OnDestroy {
   private userDisposable: Subscription | undefined;
-  allowedImageFormats = ["image/apng", "image/avif", "image/gif","image/jpeg", "image/png","image/webp","image/svg+xml"];
   
   constructor(
     @Optional() public auth: AuthService,
