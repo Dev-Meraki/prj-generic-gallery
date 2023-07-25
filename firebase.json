@@ -1,8 +1,8 @@
 {
   "hosting": [
     {
-      "target": "state-mgmnt",
-      "public": "dist/golu-life",
+      "target": "gallery",
+      "public": "dist/gallery",
       "ignore": [
         "**/.*"
       ],
@@ -34,8 +34,8 @@
       ]
     },
     {
-      "target": "state-mgmnt",
-      "public": "dist/golu-life",
+      "target": "gallery",
+      "public": "dist/gallery",
       "ignore": [
         "**/.*"
       ],

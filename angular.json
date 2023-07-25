@@ -10,7 +10,7 @@
     }
   },
   "projects": {
-    "state-mgmnt": {
+    "gallery": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -27,7 +27,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/golu-life",
+            "outputPath": "dist/gallery",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -83,18 +83,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "state-mgmnt:build"
+            "browserTarget": "gallery:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "state-mgmnt:build:production"
+              "browserTarget": "gallery:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "state-mgmnt:build"
+            "browserTarget": "gallery:build"
           }
         },
         "test": {
@@ -116,11 +116,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "state-mgmnt:serve"
+            "devServerTarget": "gallery:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "state-mgmnt:serve:production"
+              "devServerTarget": "gallery:serve:production"
             }
           }
         },
@@ -129,13 +129,13 @@
           "options": {
             "prerender": false,
             "ssr": false,
-            "browserTarget": "state-mgmnt:build:production",
-            "firebaseProject": "golu-life",
-            "firebaseHostingSite": "golu-life"
+            "browserTarget": "gallery:build:production",
+            "firebaseProject": "gallery",
+            "firebaseHostingSite": "gallery"
           }
         }
       }
     }
   },
-  "defaultProject": "state-mgmnt"
+  "defaultProject": "gallery"
 }

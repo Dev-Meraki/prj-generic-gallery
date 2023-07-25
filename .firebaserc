@@ -1,14 +1,14 @@
 {
   "targets": {
-    "golu-life": {
+    "gallery": {
       "hosting": {
-        "state-mgmnt": [
-          "golu-life"
+        "gallery": [
+          "gallery"
         ]
       }
     }
   },
   "projects": {
-    "default": "golu-life"
+    "default": "gallery"
   }
 }
