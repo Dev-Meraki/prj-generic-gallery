@@ -50,7 +50,7 @@ a:hover {
 }
 
 .mat-h1,
-.mat-headline,
+.mat-headline-5,
 .mat-typography h1 {
   font-family: "Ephesis", cursive;
   letter-spacing: normal;
@@ -59,7 +59,7 @@ a:hover {
 }
 @media screen and (max-width: 768px) {
   .mat-h1,
-  .mat-headline,
+  .mat-headline-5,
   .mat-typography h1 {
     font-size: 1.25em;
     line-height: 1.35em;
