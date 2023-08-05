@@ -1,26 +1,66 @@
-<ng-container *ngIf="storage.images$ | async as myImages">
+<ng-container *ngIf="imagesFromServer.images$ | async as myImages">
   <section class="d-flex justify-content-end">
     <app-user-menu></app-user-menu>
   </section>
-  <ng-container *ngIf="$any(myImages).items.length > 0">
+  <div class="container d-flex justify-content-center">
+    <div class="row">
+      <div class="col-12">
+        <mat-slide-toggle [(ngModel)]="play" (ngModelChange)="setAppMode($event)">Enter Play Mode</mat-slide-toggle>
+      </div>
+    </div>
+  </div>
+  <ng-container *ngIf="$any(myImages).results.length > 0">
+    <div class="container">
+      <div class="row" [ngClass]="{'justify-content-center': play}">
+        <ng-container *ngFor="let item of $any(myImages).results">
+          <div class="col-lg-4 col-sm-6 col-md-6 my-3 justify-content-center">
+            <mat-card class="mat-card-container" [ngClass]="{'mat-card-container-shake': shake}">
+              <mat-card-header class="justify-content-between align-items-center">
+                <div mat-card-avatar class="mat-card-header-image mb-0"></div>
+                <ng-container *ngIf="MODE==='GALLERY'">
+                  <mat-card-title>{{item?.Name | titlecase}}</mat-card-title>
+                  <mat-card-subtitle>{{item?.Position | uppercase}}</mat-card-subtitle>
+                </ng-container>
+              </mat-card-header>
+              <img mat-card-image [src]="item?.PreferredHostedHeadshotUrl || item?.HostedHeadshotWithBackgroundUrl"
+                alt="NFL Start picture">
+              <form class="d-flex flex-column" [formGroup]="guessForm">
+                <ng-container *ngIf="MODE==='PLAY'">
+                  <mat-card-content class="mt-5">
+                    <mat-form-field appearance="outline" class="example-form-field w-100">
+                      <mat-label>Enter name</mat-label>
+                      <input matInput type="text" formControlName="name">
+                    </mat-form-field>
+                  </mat-card-content>
+                  <mat-card-actions class="justify-content-between">
+                    <button mat-button type="button" (click)="onSubmit(myImages)"
+                      [disabled]="!guessForm.valid">SUBMIT</button>
+                    <button mat-button type="button" (click)="doPagination()" [disabled]="guessForm.valid">NEXT</button>
+                  </mat-card-actions>
+                </ng-container>
+              </form>
+            </mat-card>
+
+          </div>
+        </ng-container>
+
+      </div>
+    </div>
+  </ng-container>
+</ng-container>
+    <!-- <ng-container *ngIf="$any(myImages).results.length > 0">
     <div class="container-fluid  masonry-center w-100">
       <div class="row w-100 m-0 p-0 justify-content-center">
         <ngx-masonry [options]="{ gutter: 20, fitWidth: true }">
           <div
             ngxMasonryItem
             class="masonry-item"
-            *ngFor="let item of $any(myImages).items"
+            *ngFor="let item of $any(myImages).results"
           >
-            <!-- TODO: Optimise for all image formats -->
             <img
-              *ngIf="
-                item.indexOf('jpeg') > -1 ||
-                item.indexOf('jpg') > -1 ||  item.indexOf('JPG') > -1 ||
-                item.indexOf('png') > -1 ||
-                item.indexOf('gif') > -1
-              "
-              [src]="item"
-            />
+              [src]="item?.PreferredHostedHeadshotUrl || item?.HostedHeadshotWithBackgroundUrl"
+            /> -->
+    <!-- We expect no videos bg here
             <div
               class="video-container"
               *ngIf="item.indexOf('MOV') > -1 || item.indexOf('.mp4') > -1"
@@ -29,19 +69,15 @@
                 <source [src]="item" type="video/mp4" />
                 Your browser does not support HTML5 video.
               </video>
-            </div>
-          </div>
+            </div> -->
+    <!-- </div>
         </ngx-masonry>
       </div>
     </div>
   </ng-container>
-</ng-container>
-<!-- <p>Auth! <code *ngIf="auth.loggedIn$ | async as user">I am in {{$any(user).uid}}</code></p> -->
-<!-- Scroll component -->
-<div
-  infiniteScroll
-  [infiniteScrollDistance]="2"
-  [infiniteScrollThrottle]="300"
-  (scrolled)="onScroll()"
-></div>
-<app-loader></app-loader>
+</ng-container> -->
+    <!-- <p>Auth! <code *ngIf="auth.loggedIn$ | async as user">I am in {{$any(user).uid}}</code></p> -->
+    <!-- Scroll component -->
+    <div *ngIf="MODE==='GALLERY'" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="300"
+      (scrolled)="doPagination()"></div>
+    <app-loader></app-loader>

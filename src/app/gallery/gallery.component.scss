@@ -1,24 +1,100 @@
 .masonry-item {
   margin-bottom: 20px;
-  background-color: #f1f1f1;
+  background-color: #053369;
   background-size: cover;
   width: 340px;
+  border-radius: 58px;
+  box-shadow: 25px 0 20px -20px rgba(0, 0, 0, 0.45), -25px 0 20px -20px rgba(0, 0, 0, 0.45)
 }
+
 .masonry-item img {
   width: 100%;
   min-height: 340px;
   border-radius: 8px;
-    box-shadow: rgb(60 64 67 / 30%) 0px 1px 2px 0px, rgb(60 64 67 / 15%) 0px 2px 
+  box-shadow: rgb(60 64 67 / 30%) 0px 1px 2px 0px, rgb(60 64 67 / 15%) 0px 2px
 }
+
 .masonry-item video {
   width: 100%;
   max-height: 100%;
 }
+
 .masonry-item .video-container {
   width: 100%;
   min-height: 700px;
 }
+
 .masonry-center {
   text-align: center;
   margin: 0 auto;
+}
+
+.mat-card-container {
+  max-width: 340px;
+  color: black;
+}
+
+.mat-card-header-image {
+  background-image: url('../../assets/nfl-logo-sm.png');
+  background-size: cover;
+  height: 70px;
+  width: 50px;
+  border-radius: 0%;
+}
+::ng-deep .mdc-form-field>label {
+  color:white;
+  font-family: 'All-Pro-Heavy-Black';
+}
+.mat-card-container-shake {
+  /* Start the shake animation and make the animation last for 0.5 seconds */
+  animation: shake 0.5s;
+
+  /* When the animation is finished, start again */
+  animation-iteration-count: 1;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
 }

@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MaterialModule } from './material/material.module';
-import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { MAT_LEGACY_SNACK_BAR_DEFAULT_OPTIONS as MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/legacy-snack-bar';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
@@ -18,20 +18,26 @@ import { FallbackComponent } from './fallback/fallback.component';
 import { NgxMasonryModule } from 'ngx-masonry';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { LoaderComponent } from './loader/loader.component';
+import { SnackBarComponent } from './snack-bar/snack-bar.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ConfettiComponent } from './confetti/confetti.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
-    SnackBarComponent,
     SignInComponent,
     GalleryComponent,
     UserMenuComponent,
     FallbackComponent,
     LoaderComponent,
+    SnackBarComponent,
+    ConfettiComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     InfiniteScrollModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -41,6 +47,8 @@ import { LoaderComponent } from './loader/loader.component';
     provideAuth(() => getAuth()),
     provideStorage(() => getStorage()),
     NgxMasonryModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } },

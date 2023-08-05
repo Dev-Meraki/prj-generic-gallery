@@ -5,33 +5,39 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatLegacyTooltipModule as MatTooltipModule } from '@angular/material/legacy-tooltip';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 @NgModule({
   declarations: [],
   imports: [
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-    MatTooltipModule,
     MatBadgeModule,
     MatDividerModule,
     MatToolbarModule,
     MatSnackBarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSlideToggleModule
     
   ],
   exports: [
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-    MatTooltipModule,
     MatBadgeModule,
     MatDividerModule,
     MatToolbarModule,
     MatSnackBarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSlideToggleModule
   ],
 })
 export class MaterialModule {}

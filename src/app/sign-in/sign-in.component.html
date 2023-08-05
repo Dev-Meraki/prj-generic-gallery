@@ -1,22 +1,42 @@
 <div class="container py-4">
-  <section class="centered card-text w-100 text-center px-2">
-    <h1 class="p-2">Prove You're Golu</h1>
-  </section>
-  <div class="d-flex justify-content-center mt-5 mt-lg-3 centered-btn">
-    <div class="google-btn mt-5 d-flex" (click)="auth.login()">
-      <div class="google-icon-wrapper">
-        <img
-          class="google-icon"
-          src="assets/google_logo.svg"
-        />
+  <div class="row">
+      <div mat-card-avatar class="mat-card-header-image mb-0 col-4"></div>
+      <div class="col-8">
+        <h1 class="p-2">NFL Fan Club</h1>
       </div>
-      <p class="btn-text px-2">
-        <b style="font-weight: 500">Sign in with google</b>
-      </p>
+  </div>
+  <!-- <div class="row">
+    <div class="col-12">
+      <h1 class="p-2">NFL Fan Club</h1>
+    </div>
+  </div> -->
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex justify-content-center mt-5 mt-lg-3 centered-btn">
+        <div class="google-btn mt-5 d-flex" (click)="auth.login()">
+          <div class="google-icon-wrapper">
+            <img
+              class="google-icon"
+              src="assets/google_logo.svg"
+            />
+          </div>
+          <p class="btn-text px-2">
+            <b style="font-weight: 500">Sign in with google</b>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
+  <!-- <section class="centered card-text w-100 text-center px-2">
+    <h1 class="p-2">NFL Fan Club</h1>
+  </section> -->
 </div>
-
+<!-- <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Fluid jumbotron</h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+  </div>
+</div> -->
 <!-- <div *ngIf="auth.user$ | async; then authenticated else guest"> -->
 <!-- template will replace this div -->
 <!-- </div> -->

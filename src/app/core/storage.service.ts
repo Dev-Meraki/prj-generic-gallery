@@ -1,6 +1,5 @@
 import { Injectable, Optional } from '@angular/core';
 import {
-  Storage,
   getStorage,
   ref,
   list,
@@ -31,7 +30,6 @@ export class StorageService {
   images$ = this.images.asObservable();
 
   constructor(
-    private _fireStorage: Storage,
     @Optional() public auth: AuthService,
     private loader: LoaderService
   ) {}

@@ -2,9 +2,24 @@
 // @import url(https://fonts.googleapis.com/css?family=Roboto:500);
 @use "@angular/material" as mat;
 @import url("https://fonts.googleapis.com/css2?family=Ephesis&display=swap");
-
+@font-face {
+  font-family: 'All-Pro-Heavy-Black';
+  src: url('../src/assets/all-pro-sans-heavy.otf');
+}
+@font-face {
+  font-family: 'All-Pro-Heavy';
+  src: url('../src/assets/all-pro-sans-heavy.otf');
+}
+@font-face {
+  font-family: 'All-Pro-Medium';
+  src: url('../src/assets/all-pro-sans-medium.otf');
+}
+@font-face {
+  font-family: 'All-Pro-Regular';
+  src: url('../src/assets/all-pro-sans-regular.otf');
+}
 $my-custom-typography: mat.define-legacy-typography-config(
-  $font-family: "Ephesis",
+  $font-family: "All-Pro-Heavy-Black",
   $subheading-1: mat.define-typography-level(1.5em, 1, 400),
 );
 // TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
@@ -21,21 +36,20 @@ $my-custom-typography: mat.define-legacy-typography-config(
 html,
 body {
   height: 100%;
-  // background-image: url(/assets/landing-page/banner/1.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  // background-color: #f4e7ec;
 }
 
 .body-background {
-  background-image: url(/assets/landing-page/banner/1.jpg);
+  background-image: url('./assets/landing-page/banner/landing-pg-1.jpg');
   background-position: center center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  // background-color: #f4e7ec;
+  // background-attachment: fixed;
+  // background-size: cover;
+  // background: #043369;
+  color: white;
 }
 body {
   margin: 0;
@@ -52,11 +66,19 @@ a:hover {
 .mat-h1,
 .mat-headline-5,
 .mat-typography h1 {
-  font-family: "Ephesis", cursive;
+  font-family: "All-Pro-Heavy-Black", cursive;
   letter-spacing: normal;
   margin: 0 0 16px;
   font-size: 2em;
 }
+.mat-card-header-image {
+  background-image: url('./assets/nfl-logo-sm.png');
+  background-size: cover;
+  height: 70px;
+  width: 50px;
+  border-radius: 0%;
+}
+
 @media screen and (max-width: 768px) {
   .mat-h1,
   .mat-headline-5,
