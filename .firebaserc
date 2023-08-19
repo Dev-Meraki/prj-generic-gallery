@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "meraki-public"
-  }
+  },
+  "targets": {
+    "meraki-public": {
+      "hosting": {
+        "gallery": [
+          "gallery-showcase"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
