@@ -5,21 +5,21 @@ name: Deploy to Firebase Hosting on merge
 'on':
   push:
     branches:
-      - develop
+      - main
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
-      - name: Setup Node Version 14
+      - name: Setup Node Version 16
         uses: actions/setup-node@v3
         with:
           node-version: 16
       - name: Install Existing Dependencies
         run: npm i
       - name: Build
-        run: npm run build-dev-stg-common
+        run: npm run build-prod
       - name: Deploy On Firebase Live Channel
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:

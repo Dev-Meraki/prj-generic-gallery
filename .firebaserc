@@ -1,13 +1,4 @@
 {
-  "targets": {
-    "gallery": {
-      "hosting": {
-        "gallery": [
-          "gallery"
-        ]
-      }
-    }
-  },
   "projects": {
     "default": "meraki-public"
   }
