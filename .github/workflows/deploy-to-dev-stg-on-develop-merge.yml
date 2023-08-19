@@ -11,11 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
-      - name: Setup Node Version 16
+        uses: actions/checkout@v2
+      - name: Setup Node Version 14
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 14
       - name: Install Existing Dependencies
         run: npm i
       - name: Build
