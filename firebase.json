@@ -1,7 +1,7 @@
 {
   "hosting": [
     {
-      "target": "gallery",
+      "site":"meraki-public",
       "public": "dist/gallery",
       "ignore": [
         "firebase.json",
