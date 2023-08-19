@@ -26,4 +26,5 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_MERAKI_PUBLIC }}'
           channelId: live
+          firebaseToolsVersion: 11.16.0
           projectId: meraki-public
