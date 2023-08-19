@@ -9,6 +9,6 @@
     }
   },
   "projects": {
-    "default": "gallery"
+    "default": "meraki-public"
   }
 }

@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   useEmulators: true,
-  API_URL:'http://localhost:3000',
+  API_URL:'https://api.devmeraki.com',
   SPORTS:{
     NFL:'nfl'
   },

@@ -21,7 +21,6 @@ import { LoaderComponent } from './loader/loader.component';
 import { SnackBarComponent } from './snack-bar/snack-bar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ConfettiComponent } from './confetti/confetti.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +32,6 @@ import { ConfettiComponent } from './confetti/confetti.component';
     FallbackComponent,
     LoaderComponent,
     SnackBarComponent,
-    ConfettiComponent,
   ],
   imports: [
     BrowserModule,

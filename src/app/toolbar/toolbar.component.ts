@@ -14,11 +14,5 @@ export class ToolbarComponent implements OnInit {
   booksBorrowed: number = 0;
 
   ngOnInit(): void {
-    // this.myBooks.$myBooks
-    //   .pipe(
-    //     map((data) => data.length),
-    //     takeUntil(this.notifier)
-    //   )
-    //   .subscribe((data) => (this.booksBorrowed = data));
   }
 }
