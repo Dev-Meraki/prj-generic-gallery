@@ -13,6 +13,7 @@ export class LoaderService {
     return this.loading.getValue();
   }
   setLoadingState(state: boolean) {
+    console.log('Loader',state)
     return this.loading.next(state);
   }
 }

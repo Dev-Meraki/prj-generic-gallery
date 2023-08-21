@@ -5,9 +5,7 @@ import {
   signOut,
   User,
   GoogleAuthProvider,
-  signInWithPopup,
   signInWithRedirect,
-  getRedirectResult,
 } from '@angular/fire/auth';
 import { traceUntilFirst } from '@angular/fire/performance';
 import { BehaviorSubject } from 'rxjs';
@@ -32,8 +30,8 @@ export class AuthService {
     private router: Router,
     private loader: LoaderService
   ) {
+    // const result = getRedirectResult(this.auth).then((result:any)=>console.log(result?.user));
     if (auth) {
-      // this.user = authState(this.auth);
       authState(this.auth)
         .pipe(
           traceUntilFirst('auth'),
@@ -49,14 +47,10 @@ export class AuthService {
     this.loader.setLoadingState(true);
     try {
       await signInWithRedirect(this.auth, new GoogleAuthProvider());
-      // TODO: Check this piece of code
-      // const user:any = await getRedirectResult(this.auth);
-      // if (user.user.uid && user.user.uid != null) {
-      //   this.router.navigate([ROUTES.GALLERY]);
-      //   this.loader.setLoadingState(false);
-      // }
     } catch (error) {
       this.handleAuthErrors(error);
+    } finally {
+      this.loader.setLoadingState(false);
     }
   }
 
