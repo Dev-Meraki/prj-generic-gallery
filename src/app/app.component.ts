@@ -16,7 +16,7 @@ export class AppComponent {
   // private userDisposable: Subscription | undefined;
   constructor(
     // private renderer: Renderer2,
-    // @Optional() private auth: AuthService
+    @Optional() private auth: AuthService
   ) {}
   // ngOnInit(): void {
     // this.userDisposable = this.auth.unauthorized$.subscribe((unauthorized) => {
