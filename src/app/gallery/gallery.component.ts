@@ -1,18 +1,19 @@
-import { Component, OnDestroy, OnInit, Optional } from '@angular/core';
+import { Component, OnDestroy, Optional } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { tap } from 'rxjs/operators';
 import { AuthService } from '../core/auth.service';
 import { ImagesFromServerService } from '../core/images-from-server.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import confetti from 'canvas-confetti';
 import { Modes } from '../shared/interfaces';
 import { ACTION, APP_MODES } from '../shared/contants';
+import { ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'app-gallery',
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GalleryComponent implements OnInit, OnDestroy {
+export class GalleryComponent implements OnDestroy {
   private userDisposable: Subscription | undefined;
   shake = false;
   play = false;
@@ -26,8 +27,7 @@ export class GalleryComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     @Optional() public auth: AuthService,
     public imagesFromServer: ImagesFromServerService
-  ) {}
-  ngOnInit(): void {
+  ) {
     this.userDisposable = this.auth.loggedIn$
       .subscribe((isLoggedIn) => {
         if (isLoggedIn) {
@@ -52,6 +52,7 @@ export class GalleryComponent implements OnInit, OnDestroy {
       this.userDisposable.unsubscribe();
     }
   }
+
   onSubmit(data: any) {
     if (this.guessForm.valid) {
       this.imagesFromServer

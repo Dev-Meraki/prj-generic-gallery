@@ -8,7 +8,8 @@ import { AuthService } from '../core/auth.service';
 export class SignInComponent implements OnInit {
   constructor(
     public auth: AuthService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {}
 }

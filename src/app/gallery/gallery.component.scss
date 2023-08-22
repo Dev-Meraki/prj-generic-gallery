@@ -28,9 +28,9 @@
 //   text-align: center;
 //   margin: 0 auto;
 // }
-.play-btn-txt {
-  color: #fff;
-  font-family: "All-Pro-Medium";
+::ng-deep .play-btn-txt .mdc-label {
+  color: #fff !important;
+  font-family: "All-Pro-Medium" !important;
 }
 .gallery {
   .mat-card-container {
@@ -44,10 +44,6 @@
     height: 70px;
     width: 50px;
     border-radius: 0%;
-  }
-  ::ng-deep .mdc-form-field > label {
-    color: white;
-    font-family: "All-Pro-Heavy-Black";
   }
   .mat-card-container-shake {
     /* Start the shake animation and make the animation last for 0.5 seconds */

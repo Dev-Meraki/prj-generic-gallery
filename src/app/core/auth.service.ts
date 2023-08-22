@@ -31,25 +31,27 @@ export class AuthService {
     private loader: LoaderService
   ) {
     // const result = getRedirectResult(this.auth).then((result:any)=>console.log(result?.user));
+    this.loader.setLoadingState(true);
     if (auth) {
       authState(this.auth)
         .pipe(
           traceUntilFirst('auth'),
-          tap((u) => console.log('Auth Service - User Details', u))
+          tap((u) => {
+            console.log('Auth Service - User Details', u);
+          })
         )
         .subscribe((isLoggedIn) => {
           this.loggedIn.next(isLoggedIn);
+          this.loader.setLoadingState(false);
         });
     }
   }
 
   public async login() {
-    this.loader.setLoadingState(true);
     try {
       await signInWithRedirect(this.auth, new GoogleAuthProvider());
     } catch (error) {
       this.handleAuthErrors(error);
-    } finally {
       this.loader.setLoadingState(false);
     }
   }
