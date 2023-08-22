@@ -52,7 +52,6 @@ export class AuthService {
       await signInWithRedirect(this.auth, new GoogleAuthProvider());
     } catch (error) {
       this.handleAuthErrors(error);
-      this.loader.setLoadingState(false);
     }
   }
 

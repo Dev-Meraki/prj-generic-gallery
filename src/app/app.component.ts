@@ -12,24 +12,25 @@ import { AuthService } from './core/auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit, OnDestroy {
-  private userDisposable: Subscription | undefined;
+export class AppComponent {
+  // private userDisposable: Subscription | undefined;
   constructor(
-    private renderer: Renderer2,
-    @Optional() private auth: AuthService
+    // private renderer: Renderer2,
+    // @Optional() private auth: AuthService
   ) {}
-  ngOnInit(): void {
-    this.userDisposable = this.auth.unauthorized$.subscribe((unauthorized) => {
-      if (unauthorized) {
-        this.renderer.removeClass(document.body, 'body-background');
-      } else {
-        this.renderer.addClass(document.body, 'body-background');
-      }
-    });
-  }
-  ngOnDestroy(): void {
-    if (this.userDisposable) {
-      this.userDisposable.unsubscribe();
-    }
-  }
+  // ngOnInit(): void {
+    // this.userDisposable = this.auth.unauthorized$.subscribe((unauthorized) => {
+    //   // Unused code for now - DO NOT DELETE
+    //   if (unauthorized) {
+    //     this.renderer.removeClass(document.body, 'body-background');
+    //   } else {
+    //     this.renderer.addClass(document.body, 'body-background');
+    //   }
+    // });
+  // }
+  // ngOnDestroy(): void {
+  //   if (this.userDisposable) {
+  //     this.userDisposable.unsubscribe();
+  //   }
+  // }
 }
