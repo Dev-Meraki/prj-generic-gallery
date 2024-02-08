@@ -5,16 +5,17 @@
 export const environment = {
   production: false,
   useEmulators: true,
-  API_URL:'http://localhost:3000',
+  API_URL:'https://api.devmeraki.com',
   SPORTS:{
     NFL:'nfl'
   },
   firebase: {
-    apiKey: "AIzaSyC93IjrOhr1oc0UWwPTFvdOIpp3Zc9QQT8",
-    authDomain: "devmeraki.com",
-    projectId: "meraki-public",
-    appId: "1:961243721322:web:f70512473dbf80b8746413",
-    measurementId: "G-H47S7TRMQV"
+    apiKey: "AIzaSyBDkJ4lQTYgaBQ5v17kvUCsiFeXUq7gSp0",
+    authDomain: "prj-meraki-gallery.firebaseapp.com",
+    projectId: "prj-meraki-gallery",
+    storageBucket: "prj-meraki-gallery.appspot.com",
+    messagingSenderId: "898496080592",
+    appId: "1:898496080592:web:3d86ce11d2efca03638cd5"
   }
 };
 
