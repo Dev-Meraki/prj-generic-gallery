@@ -12,10 +12,10 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
-      - name: Setup Node Version 16
+      - name: Setup Node Version 20
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 20
       - name: Install Existing Dependencies
         run: npm i
       - name: Build
@@ -24,7 +24,7 @@ jobs:
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_MERAKI_PUBLIC }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_PRJ_MERAKI_NFL_FAN_CLUB }}'
           channelId: live
-          firebaseToolsVersion: 11.16.0
-          projectId: meraki-public
+          firebaseToolsVersion: 13.5.1
+          projectId: prj-meraki-nfl-fan-club
