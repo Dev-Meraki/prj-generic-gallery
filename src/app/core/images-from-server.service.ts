@@ -1,8 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-// import { Observable, throwError } from 'rxjs';
-// import { catchError, retry } from 'rxjs/operators';
 import { Modes } from '../shared/interfaces';
 import { APP_MODES, ACTION } from '../shared/contants';
 
@@ -18,6 +16,8 @@ export interface Config {
   providedIn: 'root',
 })
 export class ImagesFromServerService {
+  private http = inject(HttpClient);
+  private loader = inject(LoaderService);
   private BASE_URL = `${environment.API_URL}/${environment.SPORTS.NFL}`;
   readonly offset = 0;
 
@@ -37,8 +37,6 @@ export class ImagesFromServerService {
 
   images$ = this.images.asObservable();
 
-  constructor(private http: HttpClient, private loader: LoaderService) {}
-
   private getQueryParamStr(action: string, mode: Modes | string) {
     if (action === ACTION.init && mode === APP_MODES.gallery) {
       return `limit=7&offset=0`;
@@ -50,7 +48,7 @@ export class ImagesFromServerService {
   }
 
   public getImages(action: string, mode: Modes | string = APP_MODES.gallery) {
-    this.loader.setLoadingState(true);
+    this.loader.setLoaderTo(true);
     const queryParamStr = this.getQueryParamStr(action, mode);
 
     this.getImagesFromServer(queryParamStr).subscribe((response: any) => {
@@ -63,7 +61,7 @@ export class ImagesFromServerService {
             ...response,
           });
       console.log('Updated state', this.images.getValue());
-      this.loader.setLoadingState(false);
+      this.loader.setLoaderTo(false);
     });
   }
 

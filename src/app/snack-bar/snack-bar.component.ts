@@ -1,17 +1,14 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import {MAT_SNACK_BAR_DATA} from '@angular/material/snack-bar';
+import { Component, inject } from '@angular/core';
+import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
 import { ACTION_ERROR } from '../config/constants';
 @Component({
-    selector: 'app-snack-bar',
-    templateUrl: './snack-bar.component.html',
-    styleUrls: ['./snack-bar.component.scss'],
-    standalone: false
+  selector: 'app-snack-bar',
+  templateUrl: './snack-bar.component.html',
+  styleUrls: ['./snack-bar.component.scss'],
+  standalone: false,
 })
-export class SnackBarComponent implements OnInit {
-  actionError=ACTION_ERROR;
-  constructor(@Inject(MAT_SNACK_BAR_DATA) public data: any) { }
+export class SnackBarComponent {
+  data = inject(MAT_SNACK_BAR_DATA);
 
-  ngOnInit(): void {
-  }
-
+  actionError = ACTION_ERROR;
 }

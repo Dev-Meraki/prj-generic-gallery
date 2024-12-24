@@ -1,4 +1,4 @@
-import { Injectable, Optional } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {
   Auth,
   authState,
@@ -18,6 +18,10 @@ import { ROUTES } from '../config/constants';
   providedIn: 'root',
 })
 export class AuthService {
+  private auth = inject(Auth);
+  private router = inject(Router);
+  private loader = inject(LoaderService);
+
   private loggedIn = new BehaviorSubject<User | null>(null);
   // public readonly user: Observable<User | null> = EMPTY;
   public loggedIn$ = this.loggedIn.asObservable();
@@ -25,14 +29,10 @@ export class AuthService {
   private unauthorized = new BehaviorSubject<boolean>(false);
   public unauthorized$ = this.unauthorized.asObservable();
 
-  constructor(
-    @Optional() private auth: Auth,
-    private router: Router,
-    private loader: LoaderService
-  ) {
+  constructor() {
     // const result = getRedirectResult(this.auth).then((result:any)=>console.log(result?.user));
-    this.loader.setLoadingState(true);
-    if (auth) {
+    this.loader.setLoaderTo(true);
+    if (this.auth) {
       authState(this.auth)
         .pipe(
           traceUntilFirst('auth'),
@@ -42,7 +42,7 @@ export class AuthService {
         )
         .subscribe((isLoggedIn) => {
           this.loggedIn.next(isLoggedIn);
-          this.loader.setLoadingState(false);
+          this.loader.setLoaderTo(false);
         });
     }
   }
@@ -77,7 +77,7 @@ export class AuthService {
   }
 
   handleAuthErrors(error: any) {
-    this.loader.setLoadingState(false);
+    this.loader.setLoaderTo(false);
     console.log(error.code);
     // A full list of error codes is available at
     // https://firebase.google.com/docs/storage/web/handle-errors

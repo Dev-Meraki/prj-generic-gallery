@@ -1,4 +1,4 @@
-import { Injectable, Optional } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {
   getStorage,
   ref,
@@ -10,17 +10,20 @@ import {
 import { BehaviorSubject } from 'rxjs';
 import { AuthService } from './auth.service';
 import { LoaderService } from './loader.service';
-import { GALLERY, DIRECTORIES } from '../config/constants'
+import { GALLERY, DIRECTORIES } from '../config/constants';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StorageService {
+  auth = inject(AuthService);
+  private loader = inject(LoaderService);
+
   readonly MAX_RESULTS = 7;
-  private INIT_GALLERY_STATE:GALLERY = {
+  private INIT_GALLERY_STATE: GALLERY = {
     items: [],
     nextPageToken: undefined,
-  }
+  };
   readonly storage = getStorage();
 
   private images = new BehaviorSubject<GALLERY>({
@@ -28,11 +31,6 @@ export class StorageService {
     nextPageToken: undefined,
   });
   images$ = this.images.asObservable();
-
-  constructor(
-    @Optional() public auth: AuthService,
-    private loader: LoaderService
-  ) {}
 
   public async getImages(album: string = DIRECTORIES.GOLU) {
     // Fetch the first page of 100.
@@ -68,7 +66,7 @@ export class StorageService {
   private async getObjectList(album: string, config: {}) {
     // Create a reference under which you want to list
     try {
-      this.loader.setLoadingState(true);
+      this.loader.setLoaderTo(true);
       const listRef: StorageReference = ref(this.storage, album);
       const objects: ListResult = await list(listRef, config);
 
@@ -80,7 +78,7 @@ export class StorageService {
         });
         await this.generateDownloadURL(objects.items);
       }
-      this.loader.setLoadingState(false);
+      this.loader.setLoaderTo(false);
     } catch (error) {
       this.handleStorageErrors(error);
     }
@@ -101,12 +99,12 @@ export class StorageService {
     return this.images.getValue();
   }
 
-  resetGalleryState(){
-    this.images.next({...this.INIT_GALLERY_STATE})
+  resetGalleryState() {
+    this.images.next({ ...this.INIT_GALLERY_STATE });
   }
 
   handleStorageErrors(error: any) {
-    this.loader.setLoadingState(false);
+    this.loader.setLoaderTo(false);
     // A full list of error codes is available at
     // https://firebase.google.com/docs/storage/web/handle-errors
     switch (error.code) {

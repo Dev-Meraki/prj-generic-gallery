@@ -1,4 +1,4 @@
-import { Component, OnDestroy, Optional } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../core/auth.service';
 import { ImagesFromServerService } from '../core/images-from-server.service';
@@ -8,13 +8,17 @@ import { Modes } from '../shared/interfaces';
 import { ACTION, APP_MODES } from '../shared/contants';
 import { ChangeDetectionStrategy } from '@angular/core';
 @Component({
-    selector: 'app-gallery',
-    templateUrl: './gallery.component.html',
-    styleUrls: ['./gallery.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  selector: 'app-gallery',
+  templateUrl: './gallery.component.html',
+  styleUrls: ['./gallery.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class GalleryComponent implements OnDestroy {
+  private fb = inject(FormBuilder);
+  auth = inject(AuthService);
+  imagesFromServer = inject(ImagesFromServerService);
+
   private userDisposable: Subscription | undefined;
   shake = false;
   play = false;
@@ -24,17 +28,12 @@ export class GalleryComponent implements OnDestroy {
     name: ['', Validators.required],
   });
 
-  constructor(
-    private fb: FormBuilder,
-    @Optional() public auth: AuthService,
-    public imagesFromServer: ImagesFromServerService
-  ) {
-    this.userDisposable = this.auth.loggedIn$
-      .subscribe((isLoggedIn) => {
-        if (isLoggedIn) {
-          this.imagesFromServer.getImages(ACTION.init, this.MODE);
-        }
-      });
+  constructor() {
+    this.userDisposable = this.auth.loggedIn$.subscribe((isLoggedIn) => {
+      if (isLoggedIn) {
+        this.imagesFromServer.getImages(ACTION.init, this.MODE);
+      }
+    });
   }
 
   setAppMode(play: boolean) {
