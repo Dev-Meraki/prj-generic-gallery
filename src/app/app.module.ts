@@ -19,41 +19,35 @@ import { NgxMasonryModule } from 'ngx-masonry';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { LoaderComponent } from './loader/loader.component';
 import { SnackBarComponent } from './snack-bar/snack-bar.component';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgOptimizedImage } from '@angular/common'
 
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    ToolbarComponent,
-    SignInComponent,
-    GalleryComponent,
-    UserMenuComponent,
-    FallbackComponent,
-    LoaderComponent,
-    SnackBarComponent,
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    InfiniteScrollModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MaterialModule,
-    AngularFireModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()),
-    provideStorage(() => getStorage()),
-    NgxMasonryModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NgOptimizedImage
-  ],
-  providers: [
-    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } },
-  ],
-  bootstrap: [AppComponent],
-})
+@NgModule({ declarations: [
+        AppComponent,
+        ToolbarComponent,
+        SignInComponent,
+        GalleryComponent,
+        UserMenuComponent,
+        FallbackComponent,
+        LoaderComponent,
+        SnackBarComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        InfiniteScrollModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MaterialModule,
+        AngularFireModule,
+        provideFirebaseApp(() => initializeApp(environment.firebase)),
+        provideAuth(() => getAuth()),
+        provideStorage(() => getStorage()),
+        NgxMasonryModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgOptimizedImage], providers: [
+        { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } },
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule {}

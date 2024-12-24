@@ -19,7 +19,7 @@
   src: url('../src/assets/all-pro-sans-regular.otf');
 }
 
-$custom-typography: mat.define-typography-config(
+$custom-typography: mat.m2-define-typography-config(
   $font-family: "All-Pro-Heavy-Black"
 );
 // TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
