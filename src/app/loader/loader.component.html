@@ -1,3 +1,5 @@
-<div *ngIf="loading()" class="d-flex justify-content-center">
-  <img style="width: 12vw" src="assets/infinity.svg" alt="Loading..." />
-</div>
+@if (loading()) {
+  <div class="d-flex justify-content-center">
+    <img style="width: 12vw" src="assets/infinity.svg" alt="Loading..." />
+  </div>
+}
