@@ -8,10 +8,11 @@ import { Modes } from '../shared/interfaces';
 import { ACTION, APP_MODES } from '../shared/contants';
 import { ChangeDetectionStrategy } from '@angular/core';
 @Component({
-  selector: 'app-gallery',
-  templateUrl: './gallery.component.html',
-  styleUrls: ['./gallery.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-gallery',
+    templateUrl: './gallery.component.html',
+    styleUrls: ['./gallery.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class GalleryComponent implements OnDestroy {
   private userDisposable: Subscription | undefined;

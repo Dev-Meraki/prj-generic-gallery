@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../core/auth.service';
 @Component({
-  selector: 'app-fallback',
-  templateUrl: './fallback.component.html',
-  styleUrls: ['./fallback.component.scss']
+    selector: 'app-fallback',
+    templateUrl: './fallback.component.html',
+    styleUrls: ['./fallback.component.scss'],
+    standalone: false
 })
 export class FallbackComponent implements OnInit {
 
