@@ -10,7 +10,7 @@ import {
 import { BehaviorSubject } from 'rxjs';
 import { AuthService } from './auth.service';
 import { LoaderService } from './loader.service';
-import { GALLERY, DIRECTORIES } from '../config/constants';
+import { GALLERY } from '../shared/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -32,7 +32,7 @@ export class StorageService {
   });
   images$ = this.images.asObservable();
 
-  public async getImages(album: string = DIRECTORIES.GOLU) {
+  public async getImages(album: string = '/test') {
     // Fetch the first page of 100.
     await this.getObjectList(album, {
       maxResults: this.MAX_RESULTS,

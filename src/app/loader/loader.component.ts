@@ -1,13 +1,9 @@
-import { Component, inject } from '@angular/core';
-import { LoaderService } from '../core/loader.service';
-
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 @Component({
   selector: 'app-loader',
-  templateUrl: './loader.component.html',
-  styleUrls: ['./loader.component.scss'],
-  standalone: false,
+  template: `<div class="d-flex justify-content-center">
+    <img style="width: 12vw" src="assets/infinity.svg" alt="Loading..." />
+  </div> `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoaderComponent {
-  loaderService = inject(LoaderService);
-  loading = this.loaderService.loadingSignal();
-}
+export class LoaderComponent {}

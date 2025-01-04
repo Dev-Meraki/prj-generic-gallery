@@ -1,18 +1,18 @@
-import { NgModule } from '@angular/core';
+import { Routes } from '@angular/router';
 import {
   AuthGuard,
   redirectUnauthorizedTo,
-  redirectLoggedInTo
+  redirectLoggedInTo,
 } from '@angular/fire/auth-guard';
-import { Routes, RouterModule } from '@angular/router';
 import { FallbackComponent } from './fallback/fallback.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { ROUTES } from './shared/contants';
+
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInToGallery = () => redirectLoggedInTo(['gallery']);
-import { ROUTES } from './config/constants';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
     redirectTo: ROUTES.LOGIN,
@@ -37,14 +37,8 @@ const routes: Routes = [
     data: { authGuardPipe: redirectLoggedInToGallery },
   },
   {
-    path:'**',
+    path: '**',
     redirectTo: ROUTES.FALLBACK,
-    pathMatch: 'full'
-  }
+    pathMatch: 'full',
+  },
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}

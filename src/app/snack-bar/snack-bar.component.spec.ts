@@ -11,12 +11,11 @@ describe('SnackBarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SnackBarComponent ],
-      imports: [
-        MAT_SNACK_BAR_DATA
-        
-      ]
-    })
+    imports: [
+        MAT_SNACK_BAR_DATA,
+        SnackBarComponent
+    ]
+})
     .compileComponents();
   });
 

@@ -34,12 +34,12 @@
 }
 .gallery {
   .mat-card-container {
-    max-width: 340px;
+    max-width: 300px; // This should match ngSrc size
     color: black;
   }
 
   .mat-card-header-image {
-    background-image: url("../../assets/nfl-logo-sm.png");
+    background-image: url("../../assets/marvel_m.svg");
     background-size: cover;
     height: 70px;
     width: 50px;
@@ -52,6 +52,14 @@
     /* When the animation is finished, start again */
     animation-iteration-count: 1;
   }
+}
+
+.image-wrapper {
+  width: 300px;
+  height: 420px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @keyframes shake {

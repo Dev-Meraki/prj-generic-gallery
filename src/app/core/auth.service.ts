@@ -5,14 +5,14 @@ import {
   signOut,
   User,
   GoogleAuthProvider,
-  signInWithRedirect,
+  signInWithPopup,
 } from '@angular/fire/auth';
 import { traceUntilFirst } from '@angular/fire/performance';
 import { BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { LoaderService } from './loader.service';
-import { ROUTES } from '../config/constants';
+import { ROUTES } from '../shared/contants';
 
 @Injectable({
   providedIn: 'root',
@@ -30,8 +30,6 @@ export class AuthService {
   public unauthorized$ = this.unauthorized.asObservable();
 
   constructor() {
-    // const result = getRedirectResult(this.auth).then((result:any)=>console.log(result?.user));
-    this.loader.setLoaderTo(true);
     if (this.auth) {
       authState(this.auth)
         .pipe(
@@ -42,14 +40,16 @@ export class AuthService {
         )
         .subscribe((isLoggedIn) => {
           this.loggedIn.next(isLoggedIn);
-          this.loader.setLoaderTo(false);
         });
     }
   }
 
   public async login() {
     try {
-      await signInWithRedirect(this.auth, new GoogleAuthProvider());
+      const result = await signInWithPopup(this.auth, new GoogleAuthProvider());
+      if (result.user) {
+        this.router.navigate([ROUTES.GALLERY]);
+      }
     } catch (error) {
       this.handleAuthErrors(error);
     }
@@ -64,11 +64,6 @@ export class AuthService {
       this.setUnauthorizedState(false);
       this.router.navigate(['/']);
     }
-    this.setAuthState();
-  }
-
-  public setAuthState() {
-    //Clear state
     this.loggedIn.next(null);
   }
 
@@ -77,7 +72,6 @@ export class AuthService {
   }
 
   handleAuthErrors(error: any) {
-    this.loader.setLoaderTo(false);
     console.log(error.code);
     // A full list of error codes is available at
     // https://firebase.google.com/docs/storage/web/handle-errors
