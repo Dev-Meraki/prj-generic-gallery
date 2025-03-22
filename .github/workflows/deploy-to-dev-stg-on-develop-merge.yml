@@ -2,7 +2,7 @@
 # https://github.com/firebase/firebase-tools
 
 name: Deploy to Firebase Hosting on merge
-'on':
+"on":
   push:
     branches:
       - develop
@@ -23,8 +23,8 @@ jobs:
       - name: Deploy On Firebase Live Channel
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_PRJ_MERAKI_NFL_FAN_CLUB }}'
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_PRJ_MERAKI_NFL_FAN_CLUB }}"
           channelId: live
           firebaseToolsVersion: 13.5.1
-          projectId: prj-meraki-nfl-fan-club
+          projectId: meraki-public

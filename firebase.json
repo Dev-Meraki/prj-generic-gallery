@@ -1,7 +1,7 @@
 {
   "hosting": [
     {
-      "site": "prj-meraki-nfl-fan-club",
+      "site": "meraki-public",
       "public": "dist/browser",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "headers": [
