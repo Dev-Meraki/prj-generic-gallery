@@ -11,8 +11,8 @@ import { traceUntilFirst } from '@angular/fire/performance';
 import { BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { LoaderService } from './loader.service';
-import { ROUTES } from '../shared/contants';
+import { ACTION, APP_MODES, ROUTES } from '../shared/contants';
+import { ImagesFromServerService } from './images-from-server.service';
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +20,7 @@ import { ROUTES } from '../shared/contants';
 export class AuthService {
   private auth = inject(Auth);
   private router = inject(Router);
-  private loader = inject(LoaderService);
+  private imagesFromServerService = inject(ImagesFromServerService);
 
   private loggedIn = new BehaviorSubject<User | null>(null);
   // public readonly user: Observable<User | null> = EMPTY;
@@ -57,6 +57,12 @@ export class AuthService {
 
   public async logout(storageUnauthorized: boolean = false) {
     await signOut(this.auth);
+    this.imagesFromServerService.resetGalleryState();
+    this.imagesFromServerService.resetPlayground(
+      ACTION.init,
+      APP_MODES.gallery
+    );
+    //TODO: This method needs testing & improvements
     if (storageUnauthorized) {
       this.setUnauthorizedState(true);
       this.router.navigate([ROUTES.FALLBACK]);
