@@ -15,32 +15,23 @@
     </div>
   </div>
 </div>
-
-@if (images().data.results.length > 0) {
+@if (images().data.results.length > 0 && MODE === 'GALLERY') {
 <div class="container gallery">
-  <div class="row" [ngClass]="{ 'justify-content-center': enterPlayMode }">
+  <div class="row">
     @for (item of images().data.results; track item.id) {
     <div
       class="col-lg-4 col-sm-6 col-md-6 d-flex justify-content-center mb-4 gx-5"
     >
-      <mat-card
-        class="mat-card-container"
-        [ngClass]="{ 'mat-card-container-shake': shake }"
-      >
+      <mat-card class="mat-card-container">
         <mat-card-header class="align-items-center">
           <div mat-card-avatar class="mat-card-header-image mb-0"></div>
-          @if (MODE === 'GALLERY') {
           <ng-container>
             <mat-card-title class="p-2">{{
               item?.name | titlecase
             }}</mat-card-title>
           </ng-container>
-          }
         </mat-card-header>
         <div class="image-wrapper">
-          @if (loading() && gameIsInPlay){
-          <app-loader />
-          }@else {
           <img
             mat-card-image
             width="300"
@@ -50,51 +41,22 @@
             alt="Data provided by Marvel. © 2025 MARVEL"
             class="mt-2"
           />
-          }
         </div>
-        @if (MODE === 'PLAY') {
-        <form class="d-flex flex-column" [formGroup]="guessForm">
-          <mat-card-content class="mt-5">
-            <mat-form-field
-              appearance="outline"
-              class="example-form-field w-100"
-            >
-              <mat-label>Guess character's name</mat-label>
-              <input matInput type="text" formControlName="name" />
-            </mat-form-field>
-          </mat-card-content>
-          <mat-card-actions class="justify-content-between">
-            <button
-              mat-button
-              type="button"
-              [disabled]="!guessForm.valid"
-              (click)="onSubmit()"
-            >
-              SUBMIT
-            </button>
-            <button
-              mat-button
-              type="button"
-              (click)="doPagination()"
-              [disabled]="guessForm.valid"
-            >
-              NEXT
-            </button>
-          </mat-card-actions>
-        </form>
-        }
       </mat-card>
     </div>
     }
   </div>
 </div>
-} } @if (MODE === 'GALLERY') {
+} @if(MODE === 'PLAY'){
+<app-game-mode />
+} } @if(MODE === 'GALLERY'){
+
 <div
   infiniteScroll
   [infiniteScrollDistance]="2"
   [infiniteScrollThrottle]="300"
   (scrolled)="doPagination()"
 ></div>
-} @if (loading() && !gameIsInPlay){
+} @if (MODE === 'GALLERY' && loading() && !gameIsInPlay()) {
 <app-loader />
 }

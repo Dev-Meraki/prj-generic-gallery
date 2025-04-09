@@ -1,0 +1,66 @@
+<div class="container gallery">
+  <div class="row justify-content-center">
+    <!-- uncomment for resource demo -->
+    <!-- @let individualImage =
+    imagesFromServer.getImagesResource.value().data.results[0]; -->
+    @let individualImage = images().data.results[0];
+    <div
+      class="col-lg-4 col-sm-6 col-md-6 d-flex justify-content-center mb-4 gx-5"
+    >
+      <mat-card
+        class="mat-card-container"
+        [ngClass]="{ 'mat-card-container-shake': shake }"
+      >
+        <mat-card-header class="align-items-center">
+          <div mat-card-avatar class="mat-card-header-image mb-0"></div>
+        </mat-card-header>
+        <div class="image-wrapper">
+          <!-- uncomment for resource demo -->
+          <!-- @if (imagesFromServer.getImagesResource.isLoading()){ -->
+          @if (loading()){
+          <app-loader />
+          }@else {
+          <img
+            mat-card-image
+            width="300"
+            height="420"
+            [ngSrc]="getImageUrl(individualImage)"
+            priority
+            alt="Data provided by Marvel. © 2025 MARVEL"
+            class="mt-2"
+          />
+          }
+        </div>
+        <form class="d-flex flex-column" [formGroup]="guessForm">
+          <mat-card-content class="mt-5">
+            <mat-form-field
+              appearance="outline"
+              class="example-form-field w-100"
+            >
+              <mat-label>Guess character's name</mat-label>
+              <input matInput type="text" formControlName="name" />
+            </mat-form-field>
+          </mat-card-content>
+          <mat-card-actions class="justify-content-between">
+            <button
+              mat-button
+              type="button"
+              [disabled]="!guessForm.valid"
+              (click)="onSubmit()"
+            >
+              SUBMIT
+            </button>
+            <button
+              mat-button
+              type="button"
+              (click)="doPagination()"
+              [disabled]="guessForm.valid"
+            >
+              NEXT
+            </button>
+          </mat-card-actions>
+        </form>
+      </mat-card>
+    </div>
+  </div>
+</div>
