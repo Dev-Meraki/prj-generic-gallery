@@ -1,14 +1,15 @@
 export const environment = {
   production: true,
+  useEmulators: true,
   API_URL: 'https://gateway.marvel.com/v1/',
-  API_KEY: 'f54627c5d4185b7ab594f6956a1fe320',
+  API_KEY: 'ENTER_YOUR_MARVEL_API_KEY',
   SPORTS: {
     NFL: 'nfl',
   },
   firebaseConfig: {
-    apiKey: 'AIzaSyC93IjrOhr1oc0UWwPTFvdOIpp3Zc9QQT8',
-    authDomain: 'meraki-public.firebaseapp.com',
-    projectId: 'meraki-public',
-    appId: '1:961243721322:web:f70512473dbf80b8746413',
+    apiKey: 'AIzaSyDfqvFjbR9oxrU0uubgldYxy3pTgzZWurw',
+    authDomain: 'prj-meraki-nfl-fan-club.firebaseapp.com',
+    projectId: 'prj-meraki-nfl-fan-club',
+    appId: '1:364812909834:web:e703753de8c97fb03c4ef3',
   },
 };
