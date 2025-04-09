@@ -4,7 +4,7 @@ import { Injectable, signal } from '@angular/core';
   providedIn: 'root',
 })
 export class LoaderService {
-  private loading = signal(false);
+  private loading = signal(true);
   public loadingSignal = this.loading.asReadonly();
 
   setLoaderTo(value: boolean) {
