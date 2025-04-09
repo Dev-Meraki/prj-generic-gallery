@@ -65,15 +65,16 @@ export class ImagesFromServerService {
   //     }`,
   //   {
   //     defaultValue: INIT_GALLERY_STATE,
-  //     // parse: (rawResponse: any) => {
-  //     //   // this.loader.setLoaderTo(false);
-  //     //   this.images.set({
-  //     //     ...rawResponse,
-  //     //   });
-  //     //   return {
-  //     //     ...rawResponse,
-  //     //   };
-  //     // },
+  //     parse: (rawResponse: any) => {
+  //       console.log('Integration with httpResource completed');
+  //       // this.loader.setLoaderTo(false);
+  //       this.images.set({
+  //         ...rawResponse,
+  //       });
+  //       return {
+  //         ...rawResponse,
+  //       };
+  //     },
   //   }
   // );
 
